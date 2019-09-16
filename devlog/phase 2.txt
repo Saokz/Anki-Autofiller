@@ -1,0 +1,16 @@
+Failed to complete the goals at the designated dates.
+
+Main issue:
+
+	I massively underestimated how long it was going to take to learn and understand
+	the source code for Anki. Plus I procrastinated on working on this pretty hard.
+	
+	Turns out you can't just "add" a card, or a note (and I'm just now learning that those
+	are two separate entities that I need to know the difference for). Adding a note/card
+	means updating and syncing carefully managed infromation in a database, and that's
+	completely uncharted territory for me.
+	
+	So I've been learning about databases and SQLite3 and spending some more time with the
+	source code.
+	
+	I'm going to be a little behind in the project timeline as a result.
