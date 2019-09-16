@@ -1,5 +1,8 @@
 # Anki-Autofiller
 
-Version 1.0 of project expected to be completed by 9/26
+Project release date pushed back to: 9/28
 
-NOTE: Version 1.0 will only search Tagalog dictionaries. Will probably add other languages and dictionaries at a different date.
+This addon will automatically search online Tagalog dictionaries for definitions of words, and create Anki cards for them. Primarily
+for those using the Flashcard program Anki to study languages. 
+
+Version 1 of project will be with Tagalog, because that's the language I'm studying right now. Other languages might be added at a later date.
