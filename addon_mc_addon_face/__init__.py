@@ -1,29 +1,59 @@
+# import the main window object (mw) from aqt
 from aqt import mw
+from anki import notes
+# import the "show info" tool from utils.py
 from aqt.utils import showInfo
+# import all of the Qt GUI library
 from aqt.qt import *
-from bs4 import BeautifulSoup
-import requests
 
-#So far addon adds an item in the "tools" menu that searches diksiyonaryo
-#for the word "din" and returns the results in a new window
+# We're going to add a menu item below. First we want to create a function to
+# be called when the menu item is activated.
 
 def testFunction():
+    # get the number of cards in the current collection, which is stored in
+    # the main window
 
-	url = "https://diksiyonaryo.ph/search/"+"din"
-	response = ""
+    m = mw.col.models
 
-	data = requests.get(url)
-	soup = BeautifulSoup(data.text, 'html.parser')
+    testModel = m.new(_("Test"))
+    testField1 = m.newField(_("TestField1"))
+    testField2 = m.newField(_("TestField2"))
+    testField3 = m.newField(_("TestField3"))
+    testField4 = m.newField(_("TestField4"))
+    m.addField(testModel, testField1)
+    m.addField(testModel, testField2)
+    m.addField(testModel, testField3)
+    m.addField(testModel, testField4)
 
-	word = soup.find('div', {'class': 'word'}, {'id': 'din'})
-	for sense in word.find_all('div', {'class': 'sense'}):
-		sense_content = sense.find('div', {'class': 'sense-content'})
-		definition = sense_content.find('span', {'class': 'definition'})
-		response += definition.get_text()
+    t = m.newTemplate(_("Test Template"))
+    t['qfmt'] = "{{"+_("TestField1")+"}}"
+    t['afmt'] = "{{"+_("TestField2")+"}}"
+    t['bqfmt'] = "{{"+_("TestField3")+"}}"
+    t['bafmt'] = "{{"+_("TestField4")+"}}"
+
+    m.addTemplate(testModel, t)
+    m.add(testModel)
+
+    """
+    Right. You figured out how to do the thing. Add the multiple fields.
+
+    But you gotta learn more about how to make templates. They're made using HTML.
+    So you gotta learn some HTML.
+
+	Then you'll be done with the "create a custom model thing". And then be pretty close to
+	"create a custom note thing"
+    """
 
 
-	showInfo("Word definition: %s" % response)
 
+
+   
+
+
+
+# create a new menu item, "test"
 action = QAction("test", mw)
+# set it to call testFunction when it's clicked
 action.triggered.connect(testFunction)
+# and add it to the tools menu
 mw.form.menuTools.addAction(action)
