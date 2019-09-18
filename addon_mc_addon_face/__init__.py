@@ -15,41 +15,22 @@ def testFunction():
 
     m = mw.col.models
 
-    testModel = m.new(_("Test"))
-    testField1 = m.newField(_("TestField1"))
-    testField2 = m.newField(_("TestField2"))
-    testField3 = m.newField(_("TestField3"))
-    testField4 = m.newField(_("TestField4"))
-    m.addField(testModel, testField1)
-    m.addField(testModel, testField2)
-    m.addField(testModel, testField3)
-    m.addField(testModel, testField4)
+    autoModel = m.new(_("Autofiller"))
+    srchField = m.newField(_("Search Term"))
+    pinDict = m.newField(_("PinoyDict"))
+    tagLess = m.newField(_("TagalogLessons"))
+    diksy = m.newField(_("Diksiyonaryo"))
+    m.addField(autoModel, srchField)
+    m.addField(autoModel, pinDict)
+    m.addField(autoModel, tagLess)
+    m.addField(autoModel, diksy)
 
-    t = m.newTemplate(_("Test Template"))
-    t['qfmt'] = "{{"+_("TestField1")+"}}"
-    t['afmt'] = "{{"+_("TestField2")+"}}"
-    t['bqfmt'] = "{{"+_("TestField3")+"}}"
-    t['bafmt'] = "{{"+_("TestField4")+"}}"
+    autoT = m.newTemplate(_("Autofiller Template"))
+    autoT['qfmt'] = "{{"+_("Search Term")+"}}"
+    autoT['afmt'] = "{{"+_("Search Term")+"}}\n\n<hr id=answer>{{"+_("PinoyDict")+"}}<br>\n"+"{{"+_("TagalogLessons")+"}}<br>\n"+"{{"+_("Diksiyonaryo")+"}}"
 
-    m.addTemplate(testModel, t)
-    m.add(testModel)
-
-    """
-    Right. You figured out how to do the thing. Add the multiple fields.
-
-    But you gotta learn more about how to make templates. They're made using HTML.
-    So you gotta learn some HTML.
-
-	Then you'll be done with the "create a custom model thing". And then be pretty close to
-	"create a custom note thing"
-    """
-
-
-
-
-   
-
-
+    m.addTemplate(autoModel, autoT)
+    m.add(autoModel)
 
 # create a new menu item, "test"
 action = QAction("test", mw)
