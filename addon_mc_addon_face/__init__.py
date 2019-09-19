@@ -6,12 +6,7 @@ from aqt.utils import showInfo
 # import all of the Qt GUI library
 from aqt.qt import *
 
-# We're going to add a menu item below. First we want to create a function to
-# be called when the menu item is activated.
-
 def testFunction():
-    # get the number of cards in the current collection, which is stored in
-    # the main window
 
     m = mw.col.models
 
@@ -31,6 +26,18 @@ def testFunction():
 
     m.addTemplate(autoModel, autoT)
     m.add(autoModel)
+
+    #need to add in a condition that checks to see if the autofiller template exists,
+    #and adds it if necessary
+
+    #figured out how to create a note and add information to it
+    n = notes.Note(mw.col, autoModel)
+    n.fields[0] = "bababooey search"
+    n.fields[1] = "bababooey PinoyDict"
+    n.fields[2] = "bababooey TagLessons"
+    n.fields[3] = "bababooey Diksiyonaryo"
+
+    mw.col.addNote(n)
 
 # create a new menu item, "test"
 action = QAction("test", mw)
