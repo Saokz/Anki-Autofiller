@@ -1,0 +1,4 @@
+stdmodels.py contained a lot of useful information.
+Creating a model wasn't too hard after that.
+
+phase completed: 9/17
