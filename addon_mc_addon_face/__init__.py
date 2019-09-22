@@ -6,6 +6,7 @@ from aqt.qt import * #change these imports to be more specific
 from addonface import pinoydict
 from addonface import diksiyonaryo
 from addonface import taglessons
+import threading
 
 def autoFill():
     models = mw.col.models
@@ -29,12 +30,17 @@ def autoFill():
 
         models.addTemplate(m, t)
         models.add(m)
+
+    pThread = threading.Thread(target=pinoydict.translate("din"))
+    tThread = threading.Thread(target=taglessons.translate("din"))
+    dThread = threading.Thread(target=diksiyonaryo.translate("din"))
+
     #Create a note with our model and populate it.
     n = notes.Note(mw.col, m)
     n.fields[0] = "din"  #This text is going to be temporary.
-    n.fields[1] = pinoydict.translate("din")
-    n.fields[2] = taglessons.translate("din")
-    n.fields[3] = diksiyonaryo.translate("din")
+    n.fields[1] = pThread.start() #okay so this is a problem. thread.start() doesn't return anything
+    n.fields[2] = tThread.start() #but we want the translate function to be threaded. And we want to
+    n.fields[3] = dThread.start() #store the strings generated into these fields.
 
     mw.col.addNote(n)
     tooltip("Added autofilled note")
