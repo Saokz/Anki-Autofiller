@@ -1,7 +1,8 @@
 from aqt import mw
 from anki import notes
 from aqt.utils import showInfo
-from aqt.qt import *
+from aqt.utils import tooltip
+from aqt.qt import * #change these imports to be more specific
 from addonface import pinoydict
 from addonface import diksiyonaryo
 from addonface import taglessons
@@ -36,6 +37,7 @@ def autoFill():
     n.fields[3] = diksiyonaryo.translate("din")
 
     mw.col.addNote(n)
+    tooltip("Added autofilled note")
 
 # create a new menu item, "test"
 action = QAction("Autofiller", mw)
