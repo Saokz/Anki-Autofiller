@@ -1,5 +1,0 @@
-Beautiful Soup integration is not a problem at all. Anki seems to come 
-prepackaged with BeautifulSoup, so implementing the webscraping scripts
-I made and incorporating them shouldn't be a problem.
-
-phase completed: 9/9
