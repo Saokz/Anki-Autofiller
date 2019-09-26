@@ -1,9 +1,0 @@
-All progress points for phase 4 were attained in...well,
-about 10 minutes. You add the data in the note.fields array,
-and collection.py does all of the work for you with the addNote
-function.
-
-Now it's time to expand upon the "???" in phase 5, and create
-hopefully the last timeline revision.
-
-phase completed: 9/18
